@@ -1,0 +1,22 @@
+<mat-drawer-container class="app-sidenav-container" autosize>
+    <mat-drawer #drawer class="app-sidenav mat-elevation-z10" [mode]="isScreenSmall ? 'over': 'side'" [opened]="!isScreenSmall">
+        <mat-toolbar color="primary" class="genda-logo">
+            <button mat-button>
+                <mat-icon>event_note</mat-icon>
+                Genda
+            </button>
+            
+        </mat-toolbar>
+        <mat-card class="demo-inline-calendar-card" >
+            <mat-calendar (selectedChange)="selected($event)" color="primary"></mat-calendar>
+        </mat-card>
+    </mat-drawer>
+    
+    <div class="app-sidenav-content">
+        <app-toolbar (toggleSidenav)="drawer.toggle()"></app-toolbar>
+        <div class="wrapper">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+  </mat-drawer-container>
+

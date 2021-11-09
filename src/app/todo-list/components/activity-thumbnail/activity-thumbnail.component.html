@@ -1,0 +1,16 @@
+<mat-accordion class="genda-todo" *ngIf="activity">
+    <mat-expansion-panel (opened)="panelOpen()"
+                         (closed)="panelClose()">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+        <mat-checkbox class="genda-checkbox" [checked]="checked" (change)="setChecked($event.checked)">
+          {{activity?.title}}
+        </mat-checkbox>
+        </mat-panel-title>
+        <mat-panel-description>
+            Priority: {{activity?.priority}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>{{activity?.description}}</p>
+    </mat-expansion-panel>
+  </mat-accordion>

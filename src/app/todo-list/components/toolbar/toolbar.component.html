@@ -1,0 +1,23 @@
+<mat-toolbar color="primary" class="mat-elevation-z10 app-toolbar">
+    <button (click)="toggleSidenav.emit()" mat-icon-button class="sidenav-toggle">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>home</mat-icon>
+    </button>
+    <span>Home</span>
+    <span class="app-toolbar-spacer"></span>
+      <button mat-icon-button (click)="addClicked()">
+        <mat-icon>add</mat-icon>
+      </button>
+    <button mat-icon-button>
+      <mat-icon>info</mat-icon>
+  </button>
+    <button mat-icon-button>
+        <mat-icon>notifications</mat-icon>
+    </button>
+    <button mat-mini-fab color="accent">
+      <mat-icon>person</mat-icon>
+  </button>
+</mat-toolbar>

@@ -1,0 +1,12 @@
+<div class="main-body">
+    <div class="genda-header">
+        <h1>{{date}}</h1>
+    </div>
+    <mat-divider class="genda-divider"></mat-divider>
+    <app-activity-thumbnail #app
+    *ngFor="let activity of activities"
+    [activity]="activity"
+    (checkBoxStateEvent)="app.logFoo()">
+</app-activity-thumbnail>
+</div>
+
