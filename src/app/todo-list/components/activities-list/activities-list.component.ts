@@ -1,6 +1,7 @@
 import { ActivitiesService } from './../../services/activities.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AuthenticationService } from 'src/app/shared/authentication.service';
 
 @Component({
   selector: 'app-activities-list',
@@ -13,7 +14,8 @@ export class ActivitiesListComponent implements OnInit {
 
   constructor(
     private activitiesService: ActivitiesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authenticationService: AuthenticationService,
     ) { }
 
   ngOnInit(): void {
@@ -21,6 +23,15 @@ export class ActivitiesListComponent implements OnInit {
     let date = new Date();
     if(dateParameter != null) date = new Date(dateParameter);
     this.date = date.toDateString();
-    this.activities.push(this.activitiesService.getActivitiesByDate(date));
+    this.activities.push.apply(this.activities, this.activitiesService.getActivitiesByDate(date));
+
+    this.activitiesService.activitiesChangeEvent.subscribe(
+      () => { this.activities = [];
+        this.ngOnInit();}
+    );
+    
+    console.log("logged",this.authenticationService.isLoggedIn );
   }
 }
+
+

@@ -8,7 +8,7 @@
     </button>
     <span>Home</span>
     <span class="app-toolbar-spacer"></span>
-      <button mat-icon-button (click)="addClicked()">
+      <button mat-icon-button (click)="openDialog()">
         <mat-icon>add</mat-icon>
       </button>
     <button mat-icon-button>
@@ -17,6 +17,7 @@
     <button mat-icon-button>
         <mat-icon>notifications</mat-icon>
     </button>
+    <span>Benvenuto {{authenticationService?.currentUser?.username}}</span>
     <button mat-mini-fab color="accent">
       <mat-icon>person</mat-icon>
   </button>

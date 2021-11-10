@@ -3,7 +3,7 @@ import { TodoListAppRoutingModule } from './todo-list-app-routing';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TodoListAppComponent } from './todo-list-app.component';
-import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { AddActivityDialog, ToolbarComponent } from './components/toolbar/toolbar.component';
 import { MainContentComponent } from './components/main-content/main-content.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { MaterialModule } from '../shared/material.module';
@@ -20,7 +20,8 @@ import { ActivityRouterActivator } from './utils/activity-route-activator.servic
     MainContentComponent,
     SidenavComponent,
     ActivitiesListComponent,
-    ActivityThumbnailComponent
+    ActivityThumbnailComponent,
+    AddActivityDialog
   ],
   imports: [
     CommonModule,

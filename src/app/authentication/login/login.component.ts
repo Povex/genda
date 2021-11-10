@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/shared/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -8,19 +9,24 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   hide = true;
+  email = "";
+  password = "";
 
-  constructor() { }
+  constructor(
+    public authenticationService: AuthenticationService,
+    public router: Router
+    ) { }
 
   ngOnInit(): void {
+    console.log("logged", this.authenticationService.isLoggedIn);
+    if(this.authenticationService.isLoggedIn)
+      this.router.navigate(['/todo-list']);
   }
+ 
 
-  email = new FormControl('', [Validators.required, Validators.email]);
-
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
+  onLoginClick(){
+    if(this.authenticationService.login(this.email, this.password)){
+      this.router.navigate(['/todo-list/activities']);
     }
-
-    return this.email.hasError('email') ? 'Not a valid email' : '';
   }
 }
